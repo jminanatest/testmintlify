@@ -2,4 +2,72 @@
 title: "Postventa - Devoluciones"
 ---
 
-PRUEBA XIMO
+Gestión de Devoluciones (Apartado 60-3)
+El apartado de Devoluciones está diseñado para gestionar todos los paquetes que regresan al almacén. Esto incluye entregas rechazadas por el cliente, paquetes no entregados por el transportista, y devoluciones por producto dañado o por derecho de desistimiento.
+Esta guía detalla el proceso para registrar una nueva devolución utilizando la captura de imagen de la etiqueta de envío, lo que automatiza la extracción de datos y la vinculación con el pedido correspondiente.
+Crear un Nuevo Registro de Devolución
+Sigue estos pasos para registrar eficientemente una nueva devolución en el sistema.
+<Steps>
+<Step>Navegar a la sección de Devoluciones</Step>
+Desde el menú principal, accede a la sección de Registros y, a continuación, selecciona Devoluciones.
+En el Menú principal, pulsa sobre [60] Registros.
+A continuación, pulsa sobre [3] Devoluciones.
+<Frame>
+<img className="rounded-xl" src="https://i.imgur.com/37P4bW0.png" alt="Acceso a la sección de Devoluciones desde el menú principal." />
+</Frame>
+<Step>Iniciar un nuevo registro</Step>
+En la pantalla de listado de devoluciones, pulsa el botón flotante con el icono + para comenzar a crear una nueva entrada.
+<Frame>
+<img className="rounded-xl" src="https://i.imgur.com/W2d2DkE.png" alt="Pulsar el botón de añadir para crear un nuevo registro de devolución." />
+</Frame>
+<Step>Capturar la etiqueta de envío</Step>
+El sistema permite crear el registro capturando una imagen de la etiqueta del paquete.
+En la pantalla Nuevo registro, pulsa el botón con el icono de la cámara.
+Enfoca la etiqueta de envío del paquete. Asegúrate de que los códigos de barras y el texto sean legibles.
+Toma la foto y confirma la captura pulsando el icono de la marca de verificación (✓).
+<Tip>
+Asegura una buena iluminación y un enfoque nítido sobre la etiqueta. El sistema utiliza reconocimiento óptico de caracteres (OCR) y lectura de códigos de barras para extraer la información automáticamente.
+</Tip>
+<Frame>
+<img className="rounded-xl" src="https://i.imgur.com/vHq0L9d.png" alt="Captura de la etiqueta de envío con la cámara de la aplicación." />
+</Frame>
+<Step>Guardar el registro inicial</Step>
+Una vez confirmada la foto, la aplicación volverá a la pantalla Nuevo registro.
+La imagen capturada aparecerá como una miniatura.
+El sistema procesará la imagen y extraerá automáticamente todos los códigos de barras detectados, que se mostrarán en la sección Barcodes.
+Pulsa Guardar para crear el registro.
+<Frame>
+<img className="rounded-xl" src="https://i.imgur.com/v79yG55.png" alt="Pantalla de nuevo registro con la imagen capturada y los códigos de barras extraídos." />
+</Frame>
+<Step>Asociar el registro a un pedido</Step>
+Después de guardar, el sistema buscará coincidencias en la base de datos utilizando los códigos de barras leídos.
+Inicialmente, el registro aparecerá como Desconocido. Espera a que la imagen se suba y procese.
+Una vez procesado, el sistema puede identificar uno o más pedidos posibles. Aparecerá un aviso Selecciona Id. Púlsalo.
+En el diálogo Selecciona la referencia correcta, elige el pedido que corresponde a la devolución.
+Pulsa Guardar para confirmar la asociación.
+<Info>
+Si el sistema no encuentra ninguna coincidencia, el registro permanecerá como `Desconocido` y deberás introducir los datos manualmente.
+</Info>
+<Frame>
+<img className="rounded-xl" src="https://i.imgur.com/b9i66cW.png" alt="Proceso de asociación del registro con un pedido existente." />
+</Frame>
+<Step>Verificar el registro completado</Step>
+El registro se actualizará con la información del pedido seleccionado, incluyendo el número de pedido (PED), el cliente (CLI) y los productos asociados.
+El estado inicial del registro será ABIERTO.
+En la pestaña Productos, podrás ver los artículos que se esperan en la devolución.
+El nuevo registro aparecerá en la parte superior de la lista de devoluciones.
+<Frame>
+<img className="rounded-xl" src="https://i.imgur.com/5lI4T3G.png" alt="Registro de devolución completado y asociado correctamente a un pedido." />
+</Frame>
+</Steps>
+Modificar el estado de un registro
+Puedes editar un registro existente para cambiar su estado o añadir más información.
+Desde el listado, selecciona el registro que deseas modificar.
+Pulsa el icono de edición (lápiz).
+En la pantalla Editar parte, selecciona el nuevo estado.
+<Warning title="Requisito para cambio de estado">
+No es posible cambiar el estado de un registro a `PENDIENTE REVISIÓN` si no se han introducido productos en él. El sistema mostrará el error: **"No se puede guardar el parte sin introducir productos"**. Asegúrate de que los productos han sido añadidos y verificados antes de cambiar el estado.
+</Warning>
+<Frame>
+<img className="rounded-xl" src="https://i.imgur.com/s6wYn3M.png" alt="Error al intentar cambiar el estado de un registro sin productos añadidos." />
+</Frame>
